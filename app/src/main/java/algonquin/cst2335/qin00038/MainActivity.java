@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,13 +27,15 @@ public class MainActivity extends AppCompatActivity {
         CheckBox cb = findViewById(R.id.mycheckbox);
         Switch sw = findViewById(R.id.myswitch);
         RadioButton rb = findViewById(R.id.myradiobutton);
-        cb.setOnCheckedChangeListener((b,c)-> {
-            if(c){
-                rb.setChecked(true);
-                sw.setChecked(false);}
-            else{
-                rb.setChecked(false);
-                sw.setChecked(true);}
-        });
+        cb.setOnCheckedChangeListener((b,c)->
+                Toast.makeText(MainActivity.this,"You clicked on the Checkbox and it is now: "+cb.isChecked(),Toast.LENGTH_LONG).show()
+        );
+        sw.setOnCheckedChangeListener((b,c)->
+                Toast.makeText(MainActivity.this,"You clicked on the Switch and it is now: "+sw.isChecked(),Toast.LENGTH_SHORT).show()
+        );
+        rb.setOnCheckedChangeListener((b,c)->
+                Toast.makeText(MainActivity.this,"You clicked on the RadioButton and it is now: "+rb.isChecked(),Toast.LENGTH_SHORT).show()
+        );
+
     }
 }
