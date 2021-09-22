@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -36,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
         rb.setOnCheckedChangeListener((b,c)->
                 Toast.makeText(MainActivity.this,"You clicked on the RadioButton and it is now: "+rb.isChecked(),Toast.LENGTH_SHORT).show()
         );
-
+        ImageView myimage = findViewById(R.id.logo_algonquin);
+        ImageButton imgbtn = findViewById( R.id.myimagebutton );
+        imgbtn.setOnClickListener(vw ->
+           Toast.makeText(MainActivity.this,"The width = " + imgbtn.getWidth() + " and height = " + imgbtn.getHeight(),Toast.LENGTH_LONG).show()
+                );
     }
 }
