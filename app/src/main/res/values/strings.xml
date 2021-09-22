@@ -4,4 +4,7 @@
     <string name="button_message">I\'m a button</string>
     <string name="editmessage">I\'m an EditText</string>
     <string name="hinttext">Write something here</string>
+    <string name="checkbox">do you want to go fish?</string>
+    <string name="myswitch">would you like receipt?</string>
+    <string name="radiobutton">turn the radio on?</string>
 </resources>

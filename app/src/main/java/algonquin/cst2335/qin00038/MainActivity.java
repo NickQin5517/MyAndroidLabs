@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,5 +23,16 @@ public class MainActivity extends AppCompatActivity {
         String editString = myedit.getText().toString();
         mytext.setText( "Your edit text has: " + editString);
         mybutton.setOnClickListener( vw -> mytext.setText("Your edit text has: " + editString) );
+        CheckBox cb = findViewById(R.id.mycheckbox);
+        Switch sw = findViewById(R.id.myswitch);
+        RadioButton rb = findViewById(R.id.myradiobutton);
+        cb.setOnCheckedChangeListener((b,c)-> {
+            if(c){
+                rb.setChecked(true);
+                sw.setChecked(false);}
+            else{
+                rb.setChecked(false);
+                sw.setChecked(true);}
+        });
     }
 }

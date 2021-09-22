@@ -27,4 +27,25 @@
         android:text="@string/editmessage"
         android:hint="@string/hinttext"
         />
+
+    <CheckBox
+        android:id="@+id/mycheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkbox"
+        />
+
+    <Switch
+        android:id="@+id/myswitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/myswitch"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <RadioButton
+        android:id="@+id/myradiobutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/radiobutton"
+        />
 </LinearLayout>
