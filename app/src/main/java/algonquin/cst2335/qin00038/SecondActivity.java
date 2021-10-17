@@ -65,8 +65,8 @@ public class SecondActivity extends AppCompatActivity {
                             try {
                                 FileOutputStream fOut  = openFileOutput("Picture.png", Context.MODE_PRIVATE);
                                 thumbnail.compress(Bitmap.CompressFormat.PNG, 100, fOut );
-                                fOut .flush();
-                                fOut .close();
+                                fOut.flush();
+                                fOut.close();
                             }
                             catch (FileNotFoundException e)
                             { e.printStackTrace();
