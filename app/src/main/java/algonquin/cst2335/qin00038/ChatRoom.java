@@ -42,6 +42,8 @@ public class ChatRoom extends AppCompatActivity {
         Button receiveBtn = findViewById(R.id.receive);
         EditText edit = findViewById(R.id.editText);
 
+        MyOpenHelper opener = new MyOpenHelper( this );
+
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a", Locale.getDefault());
         String currentDateandTime = sdf.format(new Date());
         ChatMessage thisMessage = new ChatMessage( "123", 1,currentDateandTime );
