@@ -30,6 +30,7 @@ public class ChatRoom extends AppCompatActivity {
     RecyclerView chatList;
     ArrayList<ChatMessage> messages = new ArrayList<>();
     MyChatAdapter theAdapter ;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class ChatRoom extends AppCompatActivity {
         EditText edit = findViewById(R.id.editText);
 
         MyOpenHelper opener = new MyOpenHelper( this );
-        final SQLiteDatabase db = opener.getWritableDatabase();
+        db = opener.getWritableDatabase();
 
         Cursor results = db.rawQuery("Select * from " + MyOpenHelper.TABLE_NAME + ";", null);
 
@@ -127,21 +128,23 @@ public class ChatRoom extends AppCompatActivity {
                     messages.remove(position);
                     theAdapter.notifyItemRemoved(position);
 
+                    db.delete(MyOpenHelper.TABLE_NAME, "_id=?", new String[]{Long.toString(removedMessage.getId())});
+
                     Snackbar.make(messageText, "You deleted message #" + position, Snackbar.LENGTH_LONG)
                             .setAction("Undo", clk -> {
                                 messages.add(position, removedMessage);
                                 theAdapter.notifyItemRemoved(position);
 
+                                db.execSQL(String.format( "Insert into %s values( \"%d\", \"%s\", \"%d\", \"%s\" );",
+                                        MyOpenHelper.TABLE_NAME,removedMessage.getId(), removedMessage.getMessage(),
+                                        removedMessage.getSendOrReceive(), removedMessage.getTimeSent()));
+
                             }).show();
-
-
 
                 })
                         .create().show();
 
             });
-
-
 
             messageText = itemView.findViewById(R.id.message);
             timeText = itemView.findViewById(R.id.time);
@@ -206,7 +209,7 @@ public class ChatRoom extends AppCompatActivity {
         }
         public void setId( long l) { id = l; };
 
-        public long gatId() {
+        public long getId() {
             return id;
         }
 
