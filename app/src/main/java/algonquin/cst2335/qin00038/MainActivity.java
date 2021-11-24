@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void runForecast(String cityName){
 
-
+//
 
             Executor newThread = Executors.newSingleThreadExecutor();
             newThread.execute( () -> {
